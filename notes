@@ -1,0 +1,107 @@
+username: roycc
+password: 1qaz2wsxQAZWSX
+vm: https://student.umbc.tc/index.php?page=login
+zoom: https://umbctraining.zoom.us/j/94146827242?pwd=6dQbqvEtw8oAsbo1gNZjwzqJ4eih8r.1#success
+zoom: password: 890528
+
+OSI
+1 physical
+2 data-link
+3 network
+4 transport
+5 session
+6 presentation
+7 application
+
+module 1 - the basics
+
+network 
+  two or more devices connected together to allow them to share resources and communicate
+
+Node
+  any network device that can transmit, redistribute, or receive data
+
+protocol
+  set of rules that dictate how nodes communicate on a network
+
+Network Scopes
+  PAN - personal area network - smallest distance
+  LAN - local area network - "in the building"
+  CAN - campus area network - multiple buildings
+  MAN - metropolitan area network - city
+  WAN - wide area network - 
+  WWAN - wireless wide area network
+  GAN - global area network
+
+Topology
+How a network is laid out - physical and logical
+
+Repeater
+  layer 1 hardware device that amplidies and or regenerates an attenuated signal so it travels further down the media.
+  commonly inserted inline of traffic
+
+Bridge
+  like a repeater but works at layer 2
+  it learns and remembers MAC addresses attached on either side of it and uses that knowledge to make intelligent forwarding decisions
+  breaks you network up into multiple smaller collision domains
+  few poers
+  makes software decisions
+
+logical topoligies
+  vlans
+  subnets
+  routing
+  subinterfaces
+  SSIDs
+
+Bus
+  physical - every system connected to the same line (thicknet/thinnet)
+  logical - when on person is talking, everyone else can hear what's being said
+  still used in most modern automobiles (CAN-BUS)
+
+Ethernet protocol
+  used in wired networks
+
+Collision
+  two machines try to talk at the same time
+  systems listen while talking and if they sense collision, wait a period of time and retransmit
+  
+Hub
+  layer 1 device
+  repeater, many ports
+
+switch
+  replaces bridges and hubs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
