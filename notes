@@ -3,6 +3,8 @@ password: 1qaz2wsxQAZWSX
 vm: https://student.umbc.tc/index.php?page=login
 zoom: https://umbctraining.zoom.us/j/94146827242?pwd=6dQbqvEtw8oAsbo1gNZjwzqJ4eih8r.1#success
 zoom: password: 890528
+material: https://umbctc.sharepoint.com/:f:/s/DoDCourses/EopJmWQyWsFDsVJ2T1vcx2kBixUq6ouNm73nQpjj5MqkXA?e=LqxHvb
+
 
 OSI
 1 physical - cabling, signal types, connectors, bits (0010101110000101010101010)
@@ -248,17 +250,6 @@ Wireless
     WPA2          AES         128       48         CCMP                    Deauth
     WPA3          AES         128p      48         Dragonfly               Dragonblood downgrade
                               192ent
-Cellular
-Satellite networking
-Transmission Types
-  Unicast
-    single device sending data to another single device
-  broadcast
-    single device sending data to all other devices
-  multicast
-    single device sending data to group of devices
-  anycast
-    single device sending data to the clsoes device, in a pool of many devices that provide the same service
 
 Lab 2a
 PC-A to Switch 0      straight through
@@ -273,12 +264,110 @@ lab 2b
 wo o wg bl wbl g wbr br
 wg g wo wbr br o bl wbl
 
+Cellular
+Satellite networking
+Transmission Types
+  Unicast
+    single device sending data to another single device
+  broadcast
+    single device sending data to all other devices
+  multicast
+    single device sending data to group of devices - igmp snooping
+  anycast
+    single device sending data to the clsoes device, in a pool of many devices that provide the same service
+
+01-00-5E = multicast address
+FF-FF-FF-FF-FF-FF = broadcast
+
+Ethernet
+  IEEE 802.3 standard
+  uses the CSMA/CD access method
+  predominate wired LAN technology
+  works at layer 1 and 2 of the osi
+  encapsulates packets into a frame by adding a footer and trailer
+
+Ethernet header
+
+field length    
+8             6         6        2      46-1500     4
+preamble   dst adr   src adr   type      data      fcs
+10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101011 | <- double 1 shows end of preamble 
+56 bits (7 bites) preamble
+  alternating 1's and 0's
+  sync nodes receiving clocks
+8 bit (1 byte) SFD start frame delimiter
 
 
+module 5
 
+logical network addressing
 
+layer 3 addressing used for routing determinations
+conifigured by homans
+  statically
+  dynamically
+currently ipv4 is the most widely used version
 
+ipv4
+32 bit logical address
+used dotted-decimal notation
+4 decimal numbers separated by periods
+  197.66.4.210
+each decimal number represents 8 bits (octet)
+logical addresses contain 2 components
+  network id
+  host id
+ipv4 uses a subnet mask value to determine the netid and hsot id bits
 
+maybe?
+network: 172.30.172.240
+1st: 172.30.172.241
+last: 172.30.172.246
+broadcast: 172.30.172.247
+next: 172.30.172.248
+
+maaaybe?
+192.168.55.56/29
+net: 192.168.55.56
+1st: 192.168.55.57
+last: 192.168.55.62
+broad: 192.168.55.63
+next: 192.168.55.64
+
+192.168.10.123/30
+net: 192.168.10.120
+1st: 192.168.10.121
+last: 192.168.10.122
+broad: 192.168.10.123
+next: 192.168.10.124
+
+192.168.5.78/27
+net: 192.168.5.64
+1st: 192.168.5.65
+last: 192.168.5.94
+broad: 192.168.5.95
+next: 192.168.5.96
+
+192.168.15.137/28
+net: 192.168.15.128
+1st: 192.168.15.129
+last: 192.168.15.142
+broad: 192.168.15.143
+next: 192.168.15.144
+
+192.168.67.158/24
+net: 192.168.67.0
+1st: 192.168.67.1
+last: 192.168.67.254
+broad: 192.168.67.255
+next: 192.168.68.0
+
+192.168.45.101/25
+net: 192.168.45.0
+1st: 192.168.45.1
+last: 192.168.45.126
+broad: 192.168.45.127
+next: 192.168.45.128
 
 
 
