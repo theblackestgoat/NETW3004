@@ -5,13 +5,19 @@ zoom: https://umbctraining.zoom.us/j/94146827242?pwd=6dQbqvEtw8oAsbo1gNZjwzqJ4ei
 zoom: password: 890528
 
 OSI
-1 physical
-2 data-link
-3 network
-4 transport
-5 session
-6 presentation
-7 application
+1 physical - cabling, signal types, connectors, bits (0010101110000101010101010)
+2 data-link - physical addressing, data delivery between 2 local nodes, framing data, mac addresses, ethernet
+3 network - logical addressing and routing, ipv4 ipv6, icmp
+4 transport - segmentation of data stream, provide for connections or connection-oriented data transfers, udp, tcp
+5 session - establish, maintain, tear-down a logical communication channel between 2 remote application, sockes ip:port@---ip:port#
+6 presentation - encoding and formatting of data, compression, encryption, jpg->bitstream->jpg
+7 application - protocols that provide, network functionality to applications, http, ftp, dns, dhcp, smtp
+
+tcp/ip
+4 application - http, ftp, dns, dhcp, smtp, imap
+3 transport - tcp, udp
+2 network - ip, icmp
+1 network interface - ethernet
 
 module 1 - the basics
 
@@ -32,6 +38,9 @@ Network Scopes
   WAN - wide area network - 
   WWAN - wireless wide area network
   GAN - global area network
+
+route
+  is the destination ip in my network or outside my network
 
 Topology
 How a network is laid out - physical and logical
@@ -71,15 +80,198 @@ Hub
   repeater, many ports
 
 switch
+  layer 2 device
   replaces bridges and hubs
+  still learns and remembers the mAC addresses attached to its interfaces and uses that knowledge to make intelligent forwarding decisions
+  breaks you network up into smaller collision domains
+  this is done at a hardware level
+  increase the number of collision domains
+  "invisible device"
 
+ring topology
+  systems connect from one to the next
+  forward communication along the ring
+  token packet, system holding token gets to tx
+  token moves to next system after tx
 
+Star Topology
+  connecting device in the middle of several systems
 
+Mesh Topology
+  everything collected to everything
+  partial mesh/hybrid topology - mix of mesh and start
 
+network architecture
 
+client/server
+  user machines pulling resources of a centralized location
 
+peer to peer
+  no central repository of data
+  torrents
 
+Encalsulation / de-encapsulation
+client data send
+  google chrom  www.umbctraining.com
+application layer header
+  HTTP  GET
+Transport Layer header
+  segment TCP Source/Destination port#s
+Network Layer header
+  packet ip source/destination ip
+network interface layer header
+  frame ethernet source/destination mac address
+network transmission media
+  bits unshielded twisted pair electrical signal
 
+Lab 1 - Explore the TCP/IP model
+
+Module 2 Network Transmission Media
+
+Tranmission Media
+  Pathway that physically carries data between nodes on a network
+
+Bandwidth
+  the media's theoretical capacity to carry a certain amount of network data per second
+
+Throughput
+  A network's actual measured amount of transferred network data per second
+
+Multiplexing
+  Technique that allows multiple data signals/streams to be combined over a shared media's bandwidth
+
+Atenuation
+  Signal degradation (loss) as it travels through the media
+
+Noise
+  signal degradation caused by the interaction with other energy sources
+  emi electromagnetic intereference
+  rfi radio freq
+
+Signal to Noise Ratio SNR
+  comparative strength of good signal to noise
+
+Transmission Media Types
+
+Wired
+  copper
+    coax
+      rg-8 legacy thicknet bus 10base5, 
+      rg-58 10base2, 
+      rg-6 cable isp, 
+      rg-11 cable isp long haul
+    twisted pair
+      s/ftp overall braid screen, elements foil screened, 
+      f/utp overall foil screen, elements unscreened, 
+      sf/utp overall braid and foil screen, elements unscreened, 
+      u/utp no overall screen, elements unscreened
+      cat 3 analog phone 10baseT ethernet
+      cat 5 ethernet max 100 Mb/s
+      cat5e max 1000Mbs
+      vat 6 max 10Gb/s up to 55 meters
+      cat 6a max 10Gb/s
+      cat 7 ethernet 10Gb/s and higher (note real)
+    wiring standards
+      T-568B
+      wo o, wg b, wb g, wb b
+      t568A
+      wg g, wo g, wb o, wb b
+      crossover ex
+      wo o wg b wb g wb b
+      wg g wo b wb o wb b
+      
+  patch panels
+    twisted pairs broken out and connected 
+  cable types
+    straigh through cables
+      connect unlike device - switches to routers
+        pc or hub
+      crossover cables - like to like - pc to pc etc. 
+        hub to hub or switch to switch or hub to switch
+        router to router
+        pc to router ethernet port
+  Auto MDi-X - port can change pin configuration - wire order doesnt matter anymore
+  rollover or console cable
+    direct physica; 
+  fiber          core size microns  # of light signals  cable length  max throughput
+    single mode     50 and 62.5          multiple         550m            10Gb/s
+    multi-mode      9                    1                10Km            ammGb/s      
+
+Wireless
+  Infrared
+    short to medium range 10-20ft
+    legacy speed 16Mb/s
+    current speed 1 Gb/s and higher
+    mides
+      direct line of sight
+      diffuesed dispersion
+  Near field communication NFC
+    short range radio frequency communication
+    1.5 inches or less
+  Bluetooth
+    2.4 GHz radio freq
+    discovery mode and pairing
+  Wifi        freq      bandwidth      indoor range  outdoor  max linkrate
+    802.11a    5          20            35m            120      1.5 to 54 Mbit/s
+    802.11b    2.4        20            35m            140      1 to 11
+    802.11g    2.4        20            38m            140      3 to 54
+    802.11n    2.4/5     20-40          70m            250      72 to 600
+    802.11ac   5         20/40/80/160   35m                     433 to 6933
+    802.11ax   2.4/5/6    2/80                                  600 to 9608
+  Ad Hoc and Mesh
+    devices talk to each other
+  Wireless Site Design
+    SSID broadcast
+    beacon frame
+    speed and distance requirements
+      dynamic rate shifting reduces data rate to maintain connection with weak signal
+      interferrence factors
+        1. reflection
+        2. Refraction
+        3. Diffraction
+        4. Scattering
+        5. Absorption
+        6. RFI/EMI
+    Antenna Types
+      omnidirection
+        stick
+        donut
+      unidirectional
+        yagi
+        parabolic
+        point-to-point wireless bridge
+  Wireless Security
+    emcryption    cipher    key size    IV size    Handshake Protection    Attack Vector
+    OPEN          None        None      None       None                    Sniffing     
+    WEP           RC-4        64-128    24         None                    IV attack
+    WPA           RC-4        128       48         TKIP                    Deauth
+    WPA2          AES         128       48         CCMP                    Deauth
+    WPA3          AES         128p      48         Dragonfly               Dragonblood downgrade
+                              192ent
+Cellular
+Satellite networking
+Transmission Types
+  Unicast
+    single device sending data to another single device
+  broadcast
+    single device sending data to all other devices
+  multicast
+    single device sending data to group of devices
+  anycast
+    single device sending data to the clsoes device, in a pool of many devices that provide the same service
+
+Lab 2a
+PC-A to Switch 0      straight through
+PC-B to Swithc 0      straight through
+Switch 0 to router 0  straight through
+router 0 to router 1  crossover
+router 1 to switch 1  straight through
+switch 1 to server 1  straight through
+admin to router 0    console cable
+
+lab 2b
+wo o wg bl wbl g wbr br
+wg g wo wbr br o bl wbl
 
 
 
